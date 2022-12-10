@@ -1,9 +1,5 @@
 #!/bin/bash
 
-#gn gen out/arm64-debug --root=src --args='target_os="android" target_cpu="arm64" is_debug=true use_custom_libcxx=false treat_warnings_as_errors=false rtc_include_tests=false rtc_use_h264=true'
-
-#ninja -C out/arm64-debug
-
 SOURCE_DIR=$1
 INCLUDE_DIR=$2
 

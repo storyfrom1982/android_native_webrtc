@@ -1,0 +1,25 @@
+From 6718e58f7b1bb76bb073fb391266cc8748e9264b Mon Sep 17 00:00:00 2001
+From: androiddevelopserver <liyong.kang@hytera.com>
+Date: Mon, 5 Sep 2022 17:06:01 +0800
+Subject: [PATCH] src/build m105 bed2979286743b965832101fd1632e0b043f2eb1
+
+---
+ config/BUILD.gn | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/config/BUILD.gn b/config/BUILD.gn
+index 8fc6a82df..6c2686340 100644
+--- a/config/BUILD.gn
++++ b/config/BUILD.gn
+@@ -244,6 +244,8 @@ group("common_deps") {
+ 
+   if (use_custom_libcxx) {
+     public_deps += [ "//buildtools/third_party/libc++" ]
++  } else {
++    public_deps += [ "//buildtools/third_party/libunwind" ]
+   }
+ 
+   if (use_afl) {
+-- 
+2.25.1
+

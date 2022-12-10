@@ -1,0 +1,37 @@
+From 247998ede5b4bd37bd911bf3b49997c80da04d4c Mon Sep 17 00:00:00 2001
+From: androiddevelopserver <liyong.kang@hytera.com>
+Date: Mon, 5 Sep 2022 16:50:37 +0800
+Subject: [PATCH] buildtools m105 d4d55fbf055779487e1b342916c4b12cad658af0
+
+---
+ third_party/libunwind/BUILD.gn | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/third_party/libunwind/BUILD.gn b/third_party/libunwind/BUILD.gn
+index b53aa46..6af32c3 100644
+--- a/third_party/libunwind/BUILD.gn
++++ b/third_party/libunwind/BUILD.gn
+@@ -20,13 +20,13 @@ config("libunwind_config") {
+ }
+ 
+ source_set("libunwind") {
+-  visibility = []
+-  if (is_fuchsia) {
+-    visibility += [ "//buildtools/third_party/libc++abi" ]
+-  } else if (is_android) {
+-    visibility += [ "//buildtools/third_party/libc++abi" ]
+-    visibility += [ "//services/tracing/public/cpp" ]
+-  }
++#  visibility = []
++#  if (is_fuchsia) {
++#    visibility += [ "//buildtools/third_party/libc++abi" ]
++#  } else if (is_android) {
++#    visibility += [ "//buildtools/third_party/libc++abi" ]
++#    visibility += [ "//services/tracing/public/cpp" ]
++#  }
+   if (!is_component_build) {
+     defines = [ "_LIBUNWIND_DISABLE_VISIBILITY_ANNOTATIONS" ]
+   }
+-- 
+2.25.1
+

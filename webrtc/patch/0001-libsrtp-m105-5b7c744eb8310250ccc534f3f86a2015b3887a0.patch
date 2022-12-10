@@ -1,0 +1,54 @@
+From 13bf871c816bcb152b7521fbce3912108bade966 Mon Sep 17 00:00:00 2001
+From: androiddevelopserver <liyong.kang@hytera.com>
+Date: Mon, 5 Sep 2022 17:09:18 +0800
+Subject: [PATCH] libsrtp m105 5b7c744eb8310250ccc534f3f86a2015b3887a0a
+
+---
+ BUILD.gn | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/BUILD.gn b/BUILD.gn
+index 0f0f9e5..e13e237 100644
+--- a/BUILD.gn
++++ b/BUILD.gn
+@@ -2,6 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
++import("../../webrtc.gni")
+ import("//testing/test.gni")
+ 
+ declare_args() {
+@@ -55,6 +56,10 @@ config("libsrtp_config") {
+     "include",
+     "crypto/include",
+   ]
++
++  if (!rtc_build_ssl) {
++    include_dirs += [ "$rtc_ssl_root/include" ]
++  }
+ }
+ 
+ config("libsrtp_warnings") {
+@@ -133,9 +138,15 @@ static_library("libsrtp") {
+     # "crypto/cipher/aes_icm_nss.c",
+   ]
+ 
+-  public_deps = [
+-    "//third_party/boringssl:boringssl",
+-  ]
++  if (rtc_build_ssl) {
++    public_deps = [
++      "//third_party/boringssl:boringssl",
++    ]
++  }else {
++    public_deps = [
++      "//rtc_base",
++    ]
++  }
+ }
+ 
+ if (build_libsrtp_tests) {
+-- 
+2.25.1
+
